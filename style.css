@@ -1,0 +1,1252 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    color: aliceblue;
+}
+header{
+    background-image: url("IN-en-20240506-popsignuptwoweeks-perspective_alpha_website_large.jpg");
+    background-size:contain;
+    /* background-repeat: no-repeat;
+    background-attachment: fixed; */
+   
+}
+.navbar{
+    display: flex;
+    height: 10vmax;
+    background-color:#0000006b;
+}
+.logo{
+    background-color: transparent;
+    width: 70vw;
+    height: 60%;
+    margin-left: 4vmax;
+    margin-top: 1vmax;
+}
+.second{
+    display: flex;
+    height: 40%;
+    gap: 20px;
+}
+.language{
+    background-color: black;
+    width:9vw;
+    height: 65%;
+    /* border-radius: 6px;
+    border-style: solid; */
+    margin-top: 2vmax;
+    
+}
+.second button{
+    height: 65%;
+    width: 6vw;
+    background-color: crimson;
+    /* border-radius: 6px;
+    border-style: solid; */
+    margin-top: 2vmax;
+}
+.content span{
+    text-align: center;
+}
+
+
+
+
+@media (max-width:767px){
+    header{
+        background-size:900px;
+        width: auto;
+        height: 50vmax;
+        background-position: top;  
+    }
+    .content{
+        display:flex;
+        flex-direction: column;
+        justify-content:center;
+        align-items: center;
+        
+
+        height: 40vmax;
+        background-color: rgba(0, 0, 0, 0.523);
+    }
+    .last{
+        height: 5vmax;
+        background-color: rgba(0, 0, 0, 0.523);
+    }
+    .content #a{
+
+        font-size:4vh;
+        margin-bottom:2vmax;
+}
+    .content #b{
+        font-size:2vh;
+        margin-bottom:2vmax;
+
+}
+    .content #c{
+        width:60vw;
+    }
+    .content .new{
+        display: flex;
+        flex-direction: column;
+    }
+    .content .new .q{
+        background-color:black;
+            color:aliceblue;
+            width:25vmax;
+        height:4vmax;
+            text-align:start;
+        
+        margin-top:2vmax;
+     margin-left:3vmax;
+            font-size:medium;
+        }
+    .content .new button{
+        margin-top:1vmax;
+        background-color:crimson;
+        width:17vmax;
+        height:4vmax;
+        margin-left:7vmax;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        border-radius:5px;
+        font-size:large;
+        font-weight:100;
+}
+}
+@media (min-width:768px) and (max-width:1023px){
+    header{
+        width: auto;
+        height:45vmax;
+        
+       
+       
+    }
+    .content{
+        display:flex;
+        flex-direction: column;
+        justify-content:center;
+        align-items: center;
+        height: 35vmax;
+        background-color: rgba(0, 0, 0, 0.523);
+    }
+    .last{
+        height: 11.5vmax;
+        background-color: rgba(0, 0, 0, 0.523);
+    }
+    .content #a{
+        margin-bottom:2vmax;
+        font-size:4vh;
+}
+    .content #b{
+        margin-top:2vmax;
+        font-size:2vh;
+}
+    .content #c{
+        margin-top:3vh;
+        width:65vw;
+    }
+    .content .new{
+        display: flex;
+        gap:1vw;
+
+    }
+    .content .new .q{
+        background-color:black;
+            color:aliceblue;
+            width:25vmax;
+        height:4vmax;
+            text-align:start;
+        
+        margin-top:2vmax;
+     margin-left:3vmax;
+            font-size:medium;
+        }
+        .content .new button{
+            margin-top:2vmax;
+            background-color:crimson;
+            width:14vmax;
+            height:4vmax;
+            margin-left:1vmax;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            border-radius:6px;
+            font-size:large;
+            font-weight:100;
+    }
+        
+    
+}
+@media (min-width:1024px){
+    header{
+        width: auto;
+        height: 50vmax;
+       
+       
+    }
+    .content{
+        display:flex;
+        flex-direction: column;
+        justify-content:center;
+        align-items: center;
+        height: 40vmax;
+        background-color: rgba(0, 0, 0, 0.523);
+    }
+    .last{
+        height: 6.5vmax;
+        background-color: rgba(0, 0, 0, 0.523);
+    }
+
+    .content #a{
+        margin-bottom:1vmax;
+        font-size:4vh;
+}
+    .content #b{
+        margin-top:1vmax;
+        font-size:2vh;
+}
+    .content #c{
+        margin-top:3vh;
+        width:65vw;
+    }
+    .content .new{
+        display: flex;
+        gap:1vw;
+
+    }
+    .content .new .q{
+        background-color:black;
+            color:aliceblue;
+            width:25vmax;
+        height:4vmax;
+            text-align:start;
+        
+        margin-top:2vmax;
+     margin-left:3vmax;
+            font-size:medium;
+        }
+    .content .new button{
+        margin-top:2vmax;
+        background-color:crimson;
+        width:14vmax;
+        height:4vmax;
+        
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        border-radius:5px;
+        font-size:large;
+        font-weight:100;
+}
+    
+}
+/* navbar */
+
+@media (max-width:767px){
+    .logo{
+        margin-left:1%;
+    }
+   .second{
+       gap:30px;
+       margin-right:40px;
+    
+       
+   }
+    .language{
+        width:70px;
+    }
+  .second button{
+      width:50px;
+  }
+   
+   
+    
+}
+.last{
+    height: 0.7vmax;
+    background-color:rgba(0, 0, 0, 0.852);
+    
+}
+
+@media (min-width:768px) and (max-width:1023px){
+   
+    
+}
+@media (min-width:1024px){
+    
+    
+}
+.mac{
+    height: 40vmax;
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width:767px){
+    .mac{
+        display:flex;
+        flex-direction:column;
+}
+    
+    .mac .part2{
+        background-image: url("tv.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+       border-style: solid;
+       border-radius: 2px;
+       border-color: aliceblue;
+    
+        height: 30vmax;
+        width: 40vw;
+        margin-bottom:9vmax;
+    }
+    .mac .part1{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 35vmax;
+        width: 75vw;
+        
+        font-family: 'Courier New', Courier, monospace;
+    }
+     .part1 .x1{
+        height: 6vmax;
+        font-size:3vmax;
+        font-weight: 1000;
+        margin-right:3vmax;
+         
+        font-family: 'Courier New', Courier, monospace;
+    }
+     .part1 .x2{
+        height: 5vmax;
+         width:90vw;
+         display:flex;
+         flex-direction:row;
+         justify-content:center;
+         align-items:center;
+        font-size: medium;
+        font-weight: 100;
+        font-family: 'Courier New', Courier, monospace;
+    }
+}
+@media (min-width:768px) and (max-width:1023px){
+    .mac .part2{
+        background-image: url("tv.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+       border-style: solid;
+       border-radius: 2px;
+       border-color: aliceblue;
+    
+        height: 35vmax;
+        width: 40vw;
+    }
+    .mac .part1{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 35vmax;
+        width: 50vw;
+        
+        font-family: 'Courier New', Courier, monospace;
+    }
+     .part1 .x1{
+        height: 6vmax;
+        font-size: 4vmax;
+        font-weight: 1000;
+        margin-right:3vmax;
+         
+        font-family: 'Courier New', Courier, monospace;
+    }
+     .part1 .x2{
+        height: 5vmax;
+        font-size: medium;
+        font-weight: 100;
+        font-family: 'Courier New', Courier, monospace;
+    }
+}
+@media(min-width:1024px){
+   
+    .mac .part2{
+        background-image: url("tv.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+       border-style: solid;
+       border-radius: 2px;
+       border-color: aliceblue;
+    
+        height: 35vmax;
+        width: 40vw;
+    }
+    .mac .part1{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 35vmax;
+        width: 50vw;
+        
+        font-family: 'Courier New', Courier, monospace;
+    }
+     .part1 .x1{
+        height: 6vmax;
+        font-size: 4vmax;
+        font-weight: 1000;
+        margin-right:3vmax;
+         
+        font-family: 'Courier New', Courier, monospace;
+    }
+     .part1 .x2{
+        height: 5vmax;
+        font-size: medium;
+        font-weight: 100;
+        font-family: 'Courier New', Courier, monospace;
+    }
+}
+/* second */
+.macbook{
+    height: 40vmax;
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+@media (min-width:1024px){
+    .macbook .parta1{
+        background-image: url("mobile-0819.jpg");
+       
+        background-size: contain;
+        background-repeat: no-repeat;
+       border-style: solid;
+       border-radius: 2px;
+       border-color: aliceblue;
+    
+        height: 25vmax;
+        width: 38vw;
+    }
+    .macbook .parta2{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 35vmax;
+        width: 42vw;
+      
+        margin-right:1vmax;
+        margin-left:9vmax;
+        font-family: 'Courier New', Courier, monospace;
+    }
+     .parta2 .xy1{
+        height: 6vmax;
+         
+        font-size: 3vmax;
+        font-weight: 1000;
+        margin-right:3vmax;
+         margin-bottom:2vmax;
+         
+        font-family: 'Courier New', Courier, monospace;
+    }
+     .parta2 .xy2 {
+        
+        height: 5vmax;
+        font-size: medium;
+        font-weight: 100;
+        font-family: 'Courier New', Courier, monospace;
+    }
+}
+
+@media (max-width:767px){
+    .macbook{
+         display:flex;
+         flex-direction:column-reverse;
+ }
+     .macbook .parta1{
+         background-image: url("mobile-0819.jpg");
+        
+         background-size: contain;
+         background-repeat: no-repeat;
+        border-style: solid;
+        /* border-radius: 2px;
+        border-color: aliceblue; */
+     
+         height: 15vmax;
+         width: 38vw;
+       margin-top:-9vmax;
+         
+     }
+     .macbook .parta2{
+         display: flex;
+         flex-direction: column;
+         justify-content: top;
+         align-items: center;
+         height: 25vmax;
+        z-index:1;
+       
+         /* margin-right:1vmax; */
+         /* margin-left:9vmax; */
+         margin-top:1vmax;
+         /* border-style:solid; */
+         
+         font-family: 'Courier New', Courier, monospace;
+     }
+      .parta2 .xy1{
+         height: 30%;
+          /* background-color:red; */
+          width:37vmax;
+         font-size: 3vmax;
+         font-weight: 1000;
+         /* margin-right:3vmax;
+          margin-top:-10vmax;
+           */
+         font-family: 'Courier New', Courier, monospace;
+     }
+      .parta2 .xy2 {
+         /* background-color:blue; */
+         height: 20%;
+          
+          margin-top:1vmax;
+          
+          text-align:center;
+         font-size: medium;
+         font-weight: 100;
+         font-family: 'Courier New', Courier, monospace;
+     }
+ }
+ @media (min-width:768px) and (max-width:1023px){
+    .macbook .parta1{
+        background-image: url("mobile-0819.jpg");
+       
+        background-size: contain;
+        background-repeat: no-repeat;
+       border-style: solid;
+       border-radius: 2px;
+       border-color: aliceblue;
+    
+        height: 25vmax;
+        width: 38vw;
+    }
+    .macbook .parta2{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 35vmax;
+        width: 42vw;
+      
+        margin-right:1vmax;
+        margin-left:9vmax;
+        margin-top:-5vmax;
+        gap:3vmax;
+        
+        font-family: 'Courier New', Courier, monospace;
+    }
+     .parta2 .xy1{
+        height: 6vmax;
+         
+        font-size: 3vmax;
+        font-weight: 1000;
+        margin-right:3vmax;
+         margin-bottom:2vmax;
+         
+        font-family: 'Courier New', Courier, monospace;
+    }
+     .parta2 .xy2 {
+        
+        height: 5vmax;
+        font-size: medium;
+        font-weight: 100;
+        font-family: 'Courier New', Courier, monospace;
+    }
+}
+
+
+/* third */
+
+.macbook1{
+    height: 40vmax;
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+@media (min-width:1024px){
+    .macbook1 .partab1{
+        background-image: url("device-pile-in.png");
+       
+        background-size: contain;
+        background-repeat: no-repeat;
+       border-style: solid;
+       border-radius: 2px;
+       border-color: aliceblue;
+    
+        height: 25vmax;
+        width: 38vw;
+    }
+    .macbook1 .partab2{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 35vmax;
+        width: 42vw;
+      
+        margin-right:1vmax;
+        margin-left:9vmax;
+        font-family: 'Courier New', Courier, monospace;
+    }
+     .partab2 .xyb1{
+        height: 6vmax;
+         
+        font-size: 3vmax;
+        font-weight: 1000;
+        margin-right:3vmax;
+         margin-bottom:2vmax;
+         
+        font-family: 'Courier New', Courier, monospace;
+    }
+     .partab2 .xyb2 {
+        
+        height: 5vmax;
+        font-size: medium;
+        font-weight: 100;
+        font-family: 'Courier New', Courier, monospace;
+    }
+}
+
+@media (max-width:767px){
+    .macbook1{
+         display:flex;
+         flex-direction:column;
+        justify-content:center;
+        align-content:center;
+ }
+     .macbook1 .partab1{
+        background-image: url("device-pile-in.png");
+    
+         background-size: contain;
+         background-repeat: no-repeat;
+        border-style: solid;
+        /* border-radius: 2px;
+        border-color: aliceblue; */
+     
+         height: 15vmax;
+         width: 38vw;
+         margin-top:-9vmax;
+      
+         
+     }
+     .macbook1 .partab2{
+         display: flex;
+         flex-direction: column;
+         justify-content: top;
+         align-items: center;
+         height: 25vmax;
+        z-index:1;
+       
+         /* margin-right:1vmax; */
+         /* margin-left:9vmax; */
+         margin-top:1vmax;
+         /* border-style:solid; */
+         
+         font-family: 'Courier New', Courier, monospace;
+     }
+      .partab2 .xyb1{
+         height: 30%;
+          /* background-color:red; */
+          
+         font-size: 3vmax;
+         font-weight: 1000;
+         /* margin-right:3vmax;
+          margin-top:-10vmax;
+           */
+         font-family: 'Courier New', Courier, monospace;
+     }
+      .partab2 .xyb2 {
+         /* background-color:blue; */
+         height: 20%;
+          
+          margin-top:-2vmax;
+          
+          text-align:center;
+         font-size: medium;
+         font-weight: 100;
+         font-family: 'Courier New', Courier, monospace;
+     }
+ }
+ @media (min-width:768px) and (max-width:1023px){
+    .macbook1 .partab1{
+        background-image: url("device-pile-in.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+       border-style: solid;
+       border-radius: 2px;
+       border-color: aliceblue;
+    
+        height: 25vmax;
+        width: 38vw;
+    }
+    .macbook1 .partab2{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 35vmax;
+        width: 42vw;
+      
+        margin-right:1vmax;
+        margin-left:9vmax;
+        margin-top:-5vmax;
+        gap:3vmax;
+        
+        font-family: 'Courier New', Courier, monospace;
+    }
+     .partab2 .xyb1{
+        height: 6vmax;
+         
+        font-size: 3vmax;
+        font-weight: 1000;
+        margin-right:3vmax;
+         margin-bottom:2vmax;
+         
+        font-family: 'Courier New', Courier, monospace;
+    }
+     .partab2 .xyb2 {
+        
+        height: 5vmax;
+        font-size: medium;
+        font-weight: 100;
+        font-family: 'Courier New', Courier, monospace;
+    }
+}
+
+/* four */
+.macbook2{
+    height: 40vmax;
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+@media (min-width:1024px){
+    .macbook2{
+        display:flex;
+        flex-direction:row-reverse;
+}
+    .macbook2 .partaq1{
+        background-image: url("AAAABVr8nYuAg0xDpXDv0VI9HUoH7r2aGp4TKRCsKNQrMwxzTtr-NlwOHeS8bCI2oeZddmu3nMYr3j9MjYhHyjBASb1FaOGYZNYvPBCL.png");
+       
+        background-size: contain;
+        background-repeat: no-repeat;
+       border-style: solid;
+       border-radius: 2px;
+       border-color: aliceblue;
+    
+        height: 25vmax;
+        width: 38vw;
+    }
+    .macbook2 .partaq2{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 35vmax;
+        width: 42vw;
+      
+        margin-right:1vmax;
+        margin-left:9vmax;
+        font-family: 'Courier New', Courier, monospace;
+    }
+     .partaq2 .xyq1{
+        height: 6vmax;
+         
+        font-size: 3vmax;
+        font-weight: 1000;
+        margin-right:3vmax;
+         margin-bottom:2vmax;
+         
+        font-family: 'Courier New', Courier, monospace;
+    }
+     .partaq2 .xyq2 {
+        
+        height: 5vmax;
+        font-size: medium;
+        font-weight: 100;
+        font-family: 'Courier New', Courier, monospace;
+    }
+}
+
+@media (max-width:767px){
+    .macbook2{
+         display:flex;
+         flex-direction:column;
+        justify-content:center;
+        align-content:center;
+ }
+     .macbook2 .partaq1{
+        background-image: url("AAAABVr8nYuAg0xDpXDv0VI9HUoH7r2aGp4TKRCsKNQrMwxzTtr-NlwOHeS8bCI2oeZddmu3nMYr3j9MjYhHyjBASb1FaOGYZNYvPBCL.png");
+    
+         background-size: contain;
+         background-repeat: no-repeat;
+        border-style: solid;
+        /* border-radius: 2px;
+        border-color: aliceblue; */
+     
+         height: 15vmax;
+         width: 38vw;
+         margin-top:-9vmax;
+      
+         
+     }
+     .macbook2 .partaq2{
+         display: flex;
+         flex-direction: column;
+         justify-content: top;
+         align-items: center;
+         height: 25vmax;
+        z-index:1;
+       
+         /* margin-right:1vmax; */
+         /* margin-left:9vmax; */
+         margin-top:1vmax;
+         /* border-style:solid; */
+         
+         font-family: 'Courier New', Courier, monospace;
+     }
+      .partaq2 .xyq1{
+         height: 30%;
+          /* background-color:red; */
+          
+         font-size: 3vmax;
+         font-weight: 1000;
+         /* margin-right:3vmax;
+          margin-top:-10vmax;
+           */
+         font-family: 'Courier New', Courier, monospace;
+     }
+      .partaq2 .xyq2 {
+         /* background-color:blue; */
+         height: 20%;
+          
+          margin-top:-2vmax;
+          
+          text-align:center;
+         font-size: medium;
+         font-weight: 100;
+         font-family: 'Courier New', Courier, monospace;
+     }
+ }
+ @media (min-width:768px) and (max-width:1023px){
+    .macbook2 .partaq1{
+        background-image: url("AAAABVr8nYuAg0xDpXDv0VI9HUoH7r2aGp4TKRCsKNQrMwxzTtr-NlwOHeS8bCI2oeZddmu3nMYr3j9MjYhHyjBASb1FaOGYZNYvPBCL.png");
+       
+       
+        background-size: contain;
+        background-repeat: no-repeat;
+       border-style: solid;
+       border-radius: 2px;
+       border-color: aliceblue;
+    
+        height: 25vmax;
+        width: 38vw;
+    }
+    .macbook2 .partaq2{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 35vmax;
+        width: 42vw;
+      
+        margin-right:1vmax;
+        margin-left:9vmax;
+        margin-top:-5vmax;
+        gap:3vmax;
+        
+        font-family: 'Courier New', Courier, monospace;
+    }
+     .partaq2 .xyq1{
+        height: 6vmax;
+         
+        font-size: 3vmax;
+        font-weight: 1000;
+        margin-right:3vmax;
+         margin-bottom:2vmax;
+         
+        font-family: 'Courier New', Courier, monospace;
+    }
+     .partaq2 .xyq2 {
+        
+        height: 5vmax;
+        font-size: medium;
+        font-weight: 100;
+        font-family: 'Courier New', Courier, monospace;
+    }
+}
+/* five */
+.macbook3{
+    height: 70vmax;
+    background-color: #000000;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+    gap:1vmax;
+
+}
+@media (min-width:1024px){
+   
+    .macbook3 .head{
+        font-size: 5vmax;
+        font-weight: 200;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+         margin-top:-8vmax;  
+    
+        }
+       .macbook3 #z{
+            height: 5vmax;
+            width: 80vmax;
+            background-color: #2B2B2B;
+            border-style: solid;
+            font-size: large;
+
+        }
+        .macbook3 .yadav1{
+            font-size: 25px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 300px;
+            margin-top:4vmax;
+            margin-bottom:2vmax;
+
+        }
+        .macbook3 .yadav2 .brand{
+            background-color: #000000;
+            color: white;
+            font-size:19px;
+            font-family: 'Courier New', Courier, monospace;
+            height: 4vmax;
+            width: 20vmax;
+            
+        }
+        .macbook3 .yadav2 button{
+            background-color: crimson;
+            color: white;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 200px;
+            font-size:20px;
+            height: 4vmax;
+            width: 13vmax;
+
+
+        }
+    }
+    @media (max-width:767px){
+        .macbook3 .head{
+            font-size: 3vmax;
+            font-weight: 200;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+             margin-top:-8vmax;  
+        
+            }
+           .macbook3 #z{
+                height: 5vmax;
+                width: 35vmax;
+                background-color: #2B2B2B;
+                border-style: solid;
+                font-size: large;
+    
+            }
+            .macbook3 .yadav1{
+                font-size: 2vmax;
+                text-align:center;
+               width:95vw;
+                font-family: 'Courier New', Courier, monospace;
+                font-weight: 300px;
+                margin-top:4vmax;
+                margin-bottom:2vmax;
+    
+            }
+            .macbook3 .yadav2 .brand{
+                background-color: #000000;
+                color: white;
+                font-size:19px;
+                font-family: 'Courier New', Courier, monospace;
+                height: 6vmax;
+                width: 20vmax;
+                
+            }
+            .macbook3 .yadav2 button{
+                background-color: crimson;
+                color: white;
+                font-family: 'Courier New', Courier, monospace;
+                font-weight: 200px;
+                font-size:20px;
+             
+                width: 20vmax;
+                height:6vmax;
+    
+    
+            }
+            
+
+        }
+        @media (min-width:768px) and (max-width:1023px){
+            .macbook3 .head{
+                font-size: 5vmax;
+                font-weight: 200;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                 margin-top:-8vmax;  
+            
+                }
+               .macbook3 #z{
+                    height: 5vmax;
+                    width: 80vmax;
+                    background-color: #2B2B2B;
+                    border-style: solid;
+                    font-size: large;
+        
+                }
+                .macbook3 .yadav1{
+                    font-size: 25px;
+                    font-family: 'Courier New', Courier, monospace;
+                    font-weight: 300px;
+                    margin-top:4vmax;
+                    margin-bottom:2vmax;
+                    text-align:center;
+        
+                }
+                .macbook3 .yadav2 .brand{
+                    background-color: #000000;
+                    color: white;
+                    font-size:19px;
+                    font-family: 'Courier New', Courier, monospace;
+                    height: 4vmax;
+                    width: 30vmax;
+                    
+                    
+                }
+                .macbook3 .yadav2 button{
+                    background-color: crimson;
+                    color: white;
+                    font-family: 'Courier New', Courier, monospace;
+                    font-weight: 200px;
+                    font-size:20px;
+                    height: 5vmax;
+                    width: 20vmax;
+        
+        
+                }
+    
+        }
+        /* six */
+        .first .tab1{
+            background-color: #000000;
+        }
+        .zero{
+            height: 40vmax;
+            background-color: #000000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
+       
+        @media (min-width:1024px){
+            
+            .zero .tab2{
+                display: flex;
+                flex-direction: row;
+                justify-content:space-evenly;
+                align-items: start;
+                background-color: transparent;
+                height:0%;
+                margin-bottom:30vmax;
+                gap:4vmax;
+                width: 30%;
+            }
+            
+            .zero .tab3{
+                display: flex;
+                flex-direction: column;
+                justify-content:space-around;
+                align-items: start;
+                background-color: transparent;
+                height: 0%;
+                gap:2vmax;
+                width: 30%;
+               margin-bottom:30vmax;
+            }
+            
+            .zero .tab4{
+                display: flex;
+                flex-direction: column;
+                justify-content:space-around;
+                align-items: start;
+                background-color: transparent;
+                height: 0%;
+                gap:2vmax;
+                width: 30%;
+                margin-bottom:30vmax;
+                
+            }
+            .zero .tab5{
+                display: flex;
+                flex-direction: column;
+                justify-content:space-around;
+                align-items: start;
+                background-color: transparent;
+                height: 0%;
+                gap:2vmax;
+                width: 30%;
+                margin-bottom:30vmax;
+            }
+            
+
+            
+
+            .zero .ram1{
+                display: flex;
+                flex-direction: column;
+                height: 90%;
+                justify-content: space-around;
+                
+            }
+            
+            
+                
+}
+@media (max-width:767px){
+    .zero .tab2{
+        display: flex;
+        flex-direction: row;
+        justify-content:space-evenly;
+        align-items: start;
+        background-color: transparent;
+        height:0%;
+        margin-bottom:30vmax;
+        gap:4vmax;
+        width: 25%;
+    }
+    
+    .zero .tab3{
+        display: flex;
+        flex-direction: column;
+        justify-content:space-around;
+        align-items: start;
+        background-color: transparent;
+        height: 0%;
+        gap:1vmax;
+        width: 25%;
+       margin-bottom:30vmax;
+    }
+    
+    .zero .tab4{
+        display: flex;
+        flex-direction: column;
+        justify-content:space-around;
+        align-items: start;
+        background-color: transparent;
+        height: 0%;
+        gap:1vmax;
+        width: 20%;
+        margin-bottom:30vmax;
+        
+    }
+    .zero .tab5{
+        display: flex;
+        flex-direction: column;
+        justify-content:space-around;
+        align-items: start;
+        background-color: transparent;
+        height: 0%;
+        gap:1vmax;
+        width: 20%;
+        margin-bottom:30vmax;
+    }
+    
+
+    
+
+    .zero .ram1{
+        display: flex;
+        flex-direction: column;
+        height: 90%;
+        justify-content: space-around;
+        
+    }
+    
+}
+@media (min-width:768px) and (max-width:1023px){
+    .zero .tab2{
+        display: flex;
+        flex-direction: row;
+        justify-content:space-evenly;
+        align-items: start;
+        background-color: transparent;
+        height:0%;
+        margin-bottom:30vmax;
+        gap:4vmax;
+        width: 30%;
+    }
+    
+    .zero .tab3{
+        display: flex;
+        flex-direction: column;
+        justify-content:space-around;
+        align-items: start;
+        background-color: transparent;
+        height: 0%;
+        gap:2vmax;
+        width: 30%;
+       margin-bottom:30vmax;
+    }
+    
+    .zero .tab4{
+        display: flex;
+        flex-direction: column;
+        justify-content:space-around;
+        align-items: start;
+        background-color: transparent;
+        height: 0%;
+        gap:2vmax;
+        width: 30%;
+        margin-bottom:30vmax;
+        
+    }
+    .zero .tab5{
+        display: flex;
+        flex-direction: column;
+        justify-content:space-around;
+        align-items: start;
+        background-color: transparent;
+        height: 0%;
+        gap:2vmax;
+        width: 30%;
+        margin-bottom:30vmax;
+    }
+    
+
+    
+
+    .zero .ram1{
+        display: flex;
+        flex-direction: column;
+        height: 90%;
+        justify-content: space-around;
+        
+    }
+    
+}
+            .ram1 .language1{
+                background-color: #000000;
+
+            }
+            
+        
