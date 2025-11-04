@@ -1,0 +1,262 @@
+import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
+
+
+public class MiniNetflix {
+    // --- Models ---
+    static class Movie {
+        private static final AtomicInteger ID_GEN = new AtomicInteger(1);
+        final int id;
+        final String title;
+        final Set<String> genres;
+        final int year;
+        private final List<Integer> ratings = new ArrayList<>();
+        private int playCount = 0;
+
+        Movie(String title, Collection<String> genres, int year) {
+            this.id = ID_GEN.getAndIncrement();
+            this.title = title;
+            this.genres = genres.stream().map(String::toLowerCase).collect(Collectors.toSet());
+            this.year = year;
+        }
+
+        synchronized void addRating(int r) {
+            if (r < 1 || r > 5) throw new IllegalArgumentException("Rating must be 1..5");
+            ratings.add(r);
+        }
+
+        synchronized double avgRating() {
+            if (ratings.isEmpty()) return 0.0;
+            return ratings.stream().mapToInt(Integer::intValue).average().orElse(0.0);
+        }
+
+        synchronized void incrementPlay() {
+            playCount++;
+        }
+
+        synchronized int getPlayCount() {
+            return playCount;
+        }
+
+        @Override
+        public String toString() {
+            return String.format("[%d] %s (%d) genres=%s avg=%.2f plays=%d",
+                    id, title, year, genres, avgRating(), getPlayCount());
+        }
+    }
+
+    static class User {
+        private static final AtomicInteger ID_GEN = new AtomicInteger(1);
+        final int id;
+        final String name;
+        // user's genre preferences (counts from watch/rate history)
+        final Map<String, Integer> genreAffinity = new HashMap<>();
+        // track which movies user rated
+        final Map<Integer, Integer> ratings = new HashMap<>();
+
+        User(String name) {
+            this.id = ID_GEN.getAndIncrement();
+            this.name = name;
+        }
+
+        void addAffinity(String genre) {
+            genreAffinity.merge(genre.toLowerCase(), 1, Integer::sum);
+        }
+
+        List<String> favoriteGenres(int topN) {
+            return genreAffinity.entrySet().stream()
+                    .sorted((a,b) -> Integer.compare(b.getValue(), a.getValue()))
+                    .limit(topN)
+                    .map(Map.Entry::getKey)
+                    .collect(Collectors.toList());
+        }
+
+        @Override
+        public String toString() {
+            return String.format("User[%d] %s favGenres=%s", id, name, favoriteGenres(3));
+        }
+    }
+
+    // --- Service ---
+    static class NetflixService {
+        private final Map<Integer, Movie> movies = new HashMap<>();
+        private final Map<Integer, User> users = new HashMap<>();
+
+        // Add sample data helpers
+        Movie addMovie(String title, Collection<String> genres, int year) {
+            Movie m = new Movie(title, genres, year);
+            movies.put(m.id, m);
+            return m;
+        }
+
+        User addUser(String name) {
+            User u = new User(name);
+            users.put(u.id, u);
+            return u;
+        }
+
+        Optional<Movie> getMovie(int movieId) {
+            return Optional.ofNullable(movies.get(movieId));
+        }
+
+        Optional<User> getUser(int userId) {
+            return Optional.ofNullable(users.get(userId));
+        }
+
+        List<Movie> searchByTitle(String q) {
+            String ql = q.toLowerCase();
+            return movies.values().stream()
+                    .filter(m -> m.title.toLowerCase().contains(ql))
+                    .sorted(Comparator.comparing((Movie m) -> -m.avgRating()).thenComparing(m -> -m.getPlayCount()))
+                    .collect(Collectors.toList());
+        }
+
+        List<Movie> filterByGenre(String genre) {
+            String g = genre.toLowerCase();
+            return movies.values().stream()
+                    .filter(m -> m.genres.contains(g))
+                    .sorted(Comparator.comparing((Movie m) -> -m.avgRating()).thenComparing(m -> -m.getPlayCount()))
+                    .collect(Collectors.toList());
+        }
+
+        void playMovie(int userId, int movieId) {
+            User u = users.get(userId);
+            Movie m = movies.get(movieId);
+            if (u == null || m == null) {
+                System.out.println("User or movie not found.");
+                return;
+            }
+            m.incrementPlay();
+            // give user affinity for movie's genres
+            m.genres.forEach(u::addAffinity);
+            System.out.printf("%s started playing \"%s\"\n", u.name, m.title);
+        }
+
+        void rateMovie(int userId, int movieId, int rating) {
+            User u = users.get(userId);
+            Movie m = movies.get(movieId);
+            if (u == null || m == null) {
+                System.out.println("User or movie not found.");
+                return;
+            }
+            m.addRating(rating);
+            u.ratings.put(movieId, rating);
+            // stronger affinity when user rates
+            m.genres.forEach(g -> u.genreAffinity.merge(g, 2, Integer::sum));
+            System.out.printf("%s rated \"%s\" -> %d stars\n", u.name, m.title, rating);
+        }
+
+        /**
+         * Simple recommender:
+         *  - get user's top genres
+         *  - from those genres, pick top-rated movies user hasn't seen/rated yet
+         *  - fallback: top-rated overall
+         */
+        List<Movie> recommendForUser(int userId, int limit) {
+            User u = users.get(userId);
+            if (u == null) return Collections.emptyList();
+
+            List<String> favGenres = u.favoriteGenres(3);
+            Set<Integer> seenOrRated = new HashSet<>(u.ratings.keySet());
+
+            // find candidate movies in favored genres
+            List<Movie> candidates = movies.values().stream()
+                    .filter(m -> m.genres.stream().anyMatch(favGenres::contains))
+                    .filter(m -> !seenOrRated.contains(m.id))
+                    .sorted(Comparator.comparing((Movie m) -> -m.avgRating()).thenComparing(m -> -m.getPlayCount()))
+                    .collect(Collectors.toList());
+
+            if (candidates.size() < limit) {
+                // add top-rated overall
+                List<Movie> more = movies.values().stream()
+                        .filter(m -> !seenOrRated.contains(m.id))
+                        .sorted(Comparator.comparing((Movie m) -> -m.avgRating()).thenComparing(m -> -m.getPlayCount()))
+                        .collect(Collectors.toList());
+                for (Movie mm : more) {
+                    if (!candidates.contains(mm)) candidates.add(mm);
+                    if (candidates.size() >= limit) break;
+                }
+            }
+
+            return candidates.stream().limit(limit).collect(Collectors.toList());
+        }
+
+        void printAllMovies() {
+            movies.values().stream()
+                    .sorted(Comparator.comparingInt(m -> m.id))
+                    .forEach(System.out::println);
+        }
+
+        void printAllUsers() {
+            users.values().stream()
+                    .sorted(Comparator.comparingInt(u -> u.id))
+                    .forEach(System.out::println);
+        }
+    }
+
+    // --- Demo CLI usage in main ---
+    public static void main(String[] args) {
+        NetflixService service = new NetflixService();
+
+        // seed movies
+        service.addMovie("The Matrix", Arrays.asList("Action", "Sci-Fi"), 1999);
+        service.addMovie("Inception", Arrays.asList("Action", "Sci-Fi", "Thriller"), 2010);
+        service.addMovie("The Godfather", Arrays.asList("Crime", "Drama"), 1972);
+        service.addMovie("Toy Story", Arrays.asList("Animation", "Family", "Comedy"), 1995);
+        service.addMovie("Interstellar", Arrays.asList("Sci-Fi", "Drama"), 2014);
+        service.addMovie("The Dark Knight", Arrays.asList("Action", "Crime", "Drama"), 2008);
+        service.addMovie("The Grand Budapest Hotel", Arrays.asList("Comedy", "Drama"), 2014);
+
+        // seed users
+        User alice = service.addUser("Alice");
+        User bob = service.addUser("Bob");
+
+        System.out.println("=== Users ===");
+        service.printAllUsers();
+        System.out.println("\n=== Movies ===");
+        service.printAllMovies();
+
+        // simulate activity
+        service.playMovie(alice.id, 1); // The Matrix
+        service.rateMovie(alice.id, 1, 5);
+        service.playMovie(alice.id, 2); // Inception
+        service.rateMovie(alice.id, 2, 4);
+        service.playMovie(alice.id, 5); // Interstellar
+        service.rateMovie(alice.id, 5, 5);
+
+        service.playMovie(bob.id, 4); // Toy Story
+        service.rateMovie(bob.id, 4, 5);
+        service.playMovie(bob.id, 7); // Grand Budapest
+        service.rateMovie(bob.id, 7, 4);
+        service.playMovie(bob.id, 3); // The Godfather
+        service.rateMovie(bob.id, 3, 5);
+
+        System.out.println("\n=== After activity ===");
+        service.printAllMovies();
+        service.printAllUsers();
+
+        System.out.println("\n=== Search: 'the' ===");
+        service.searchByTitle("the").forEach(System.out::println);
+
+        System.out.println("\n=== Filter by genre 'Sci-Fi' ===");
+        service.filterByGenre("sci-fi").forEach(System.out::println);
+
+        System.out.println("\n=== Recommendations for Alice ===");
+        service.recommendForUser(alice.id, 5).forEach(System.out::println);
+
+        System.out.println("\n=== Recommendations for Bob ===");
+        service.recommendForUser(bob.id, 5).forEach(System.out::println);
+
+        // example: Alice plays a recommended movie
+        List<Movie> recs = service.recommendForUser(alice.id, 1);
+        if (!recs.isEmpty()) {
+            Movie next = recs.get(0);
+            System.out.println("\nAlice watches recommended: " + next.title);
+            service.playMovie(alice.id, next.id);
+        }
+
+        System.out.println("\n=== Final state ===");
+        service.printAllMovies();
+    }
+}
